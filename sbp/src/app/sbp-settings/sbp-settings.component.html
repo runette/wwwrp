@@ -1,0 +1,9 @@
+<div class=card>
+    <div class="row">
+        <div class="col-8"><mat-slide-toggle
+             [checked]="wlStatus=='Active'"
+             (toggleChange)="wakelock()"
+            >Wake Lock</mat-slide-toggle></div>
+        <textarea row = "1" class="col-4">{{wlStatus}}</textarea>
+    </div>  
+</div>

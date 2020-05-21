@@ -1,0 +1,83 @@
+
+.locate {
+        top: 65px;
+        left: .5em;
+      }
+
+.ol-touch .locate{
+  top: 80px;
+}
+
+.control-button { 
+  display: none;
+}
+
+.control-button + label {
+  display: block;
+    margin: 1px;
+    padding: 0;
+    color: #fff;
+    font-size: 1.14em;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    height: 1.375em;
+    width: 1.375em;
+    line-height: .4em;
+    background-color: rgba(0,60,136,.5);
+    border: none;
+    border-radius: 2px
+}
+
+.ol-touch .control-button + label {
+  font-size: 1.5em
+}
+
+.control-button:focus,.control-button:hover {
+    text-decoration: none;
+    background-color: rgba(0,60,136,.7);
+}
+.control-button:checked + label {
+  background: blue;
+  display:inline-block;
+}
+
+
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+
+.icon {
+  line-height: 30px !important;
+}
+
+.material-icons.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+ }
+
+
+.openspaceol6-openspace-logo {
+    top: 120px;
+    left: 0.5em;
+    padding: 2px;
+    position: absolute;
+    background: transparent;
+}
+
+.openspaceol6-openspace-logo img {
+  width:50%;
+}
+
+.ol-attribution ul {
+  font-size: xx-small;
+  max-width: 80%;
+}
+
+[data-toggle="collapse"] .material-icons:before {
+  content: "expand_less";
+}
+
+[data-toggle="collapse"].collapsed .material-icons:before {
+  content: "expand_more"
+}

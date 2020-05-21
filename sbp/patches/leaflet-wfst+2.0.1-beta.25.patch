@@ -1,0 +1,16 @@
+diff --git a/node_modules/leaflet-wfst/dist/leaflet-wfst.src.js b/node_modules/leaflet-wfst/dist/leaflet-wfst.src.js
+index 34985ca..6fd6e8e 100644
+--- a/node_modules/leaflet-wfst/dist/leaflet-wfst.src.js
++++ b/node_modules/leaflet-wfst/dist/leaflet-wfst.src.js
+@@ -874,7 +874,10 @@ L.GML.ParserContainerMixin = {
+ 
+   parseElement: function (element, options) {
+     var parser = this.parsers[element.tagName];
+-    if (!parser) throw('unknown child element ' + element.tagName);
++    if (!parser) {
++      parser = this.parsers['gml:' + element.tagName];
++      if (!parser) throw('unknown child element ' + element.tagName);
++    }
+ 
+     return parser.parse(element, options);
+   }

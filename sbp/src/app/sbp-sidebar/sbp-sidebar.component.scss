@@ -1,0 +1,54 @@
+@import '../../../node_modules/sidebar-v2/scss/ol3-sidebar.scss';
+
+
+.sidebar-icons {
+    line-height:40px !important;
+    }
+
+// .sidebar-header {
+//     background-color: var(--primary);
+// }
+    
+.sidebar {
+    height: 90%;
+    }
+    
+.sidebar.collapsed {
+    width: 32px !important;
+    }
+    
+.sidebar-right {
+    right:8px !important;
+    }
+    
+.sidebar-tabs {
+    width:32px !important;
+    }
+    
+    
+.frame {
+    padding:0 !important;
+    height:92%;
+    }
+    
+    .frame .sidebar-header {
+    margin: 0px
+    }
+    
+    .sidebar-right .sidebar-content {
+    right: 32px !important;
+    }
+    
+    .tools {
+    position:absolute;
+    right:0px;
+    }
+
+    .map-container {
+        width:100%;
+        height:100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+    

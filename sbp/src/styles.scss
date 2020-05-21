@@ -1,0 +1,86 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+$primary: mat-palette($mat-deep-purple, A400, A200, A700);
+$accent: mat-palette($mat-orange, 500, A200, A700);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn); // Or mat-dark-theme
+$background: map-get($theme, background);
+
+@include angular-material-theme($theme);
+
+@import "../node_modules/ol/ol.css";
+
+@import './assets/custom.scss';
+
+$p: mat-color($primary, default);
+
+:root{
+    --primary: $p;
+    --accent: mat-color($accent, default);
+    --warn: mat-color($warn, default);
+}
+
+//default palette forground/background:
+$light-foreground-palette: map-get($theme, foreground);
+$light-background-palette: map-get($theme, background);
+
+
+.primary {
+    background-color: mat-color($primary);
+    color: mat-color($primary, default-contrast) !important;
+}
+
+.secondary {
+    background-color: mat-color($accent);
+}
+
+.warn {
+    background-color: mat-color($warn);
+    color: mat-color($warn, default-contrast) !important;
+}
+
+
+
+  .control-button:checked + label {
+    background: mat-color($primary);
+    display:inline-block;
+  }
+
+  .locate-moved .control-button:checked + label {
+    background: mat-color($accent);
+  }
+
+  .sidebar-header {
+      background-color: mat-color($primary) !important;
+  }
+
+  .sidebar-tabs > ul > li.active {
+      background-color: mat-color($primary, lighter, 50%) !important;
+  }
+
+  .inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    background-color: mat-color($background, app-bar);
+    color:mat-color($primary);
+    display: inline-block;
+    cursor: pointer; /* "hand" cursor */
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: mat-color($background, hover);
+}

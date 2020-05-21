@@ -1,0 +1,9 @@
+<mat-toolbar *ngIf="fullscreen" color="primary">
+    <span>Sandwich Flats Project</span>
+    <div fxFlex></div>
+    <button mat-raised-button color="accent" routerLink="/" >Back to Map</button>
+    <div fxFlex></div>
+
+</mat-toolbar>
+
+<iFrame class="h-100 w-100 frame" id="inv-frame" [src]="safeUrl">

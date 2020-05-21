@@ -1,0 +1,83 @@
+<mat-toolbar color="primary">
+    <span>Sandwich Flats Project</span>
+    <div fxFlex></div>
+    <button mat-raised-button color="accent" routerLink="/" > <span *ngIf="size != 'xs'">Back to Map</span><mat-icon *ngIf="size=='xs'">map</mat-icon></button>
+    <div fxFlex></div>
+    <img class="photo" *ngIf="profile" [src]="profile.getImageUrl()">
+</mat-toolbar>
+
+<div *ngIf="drive.sharedFolder; else notUser"> 
+    <mat-toolbar>
+        <span>Photo Upload</span>
+        <div fxFlex></div>
+        <input class="inputfile" type="file"  (change)="onFileChanged($event)" id="fileUpload" multiple="multiple" accept="image/*" />
+        <label class="mat-button" for="fileUpload" style="line-height: initial;"> <span *ngIf="size != 'xs'">Choose a photo</span> <mat-icon *ngIf="size=='xs'">photo_library</mat-icon></label>
+        <div fxFlex></div>
+        <button mat-button color="primary" (click)="onClick()">  
+            <mat-icon>file_upload</mat-icon>  
+                <span *ngIf="size != 'xs'"> Upload </span> 
+        </button>  
+    </mat-toolbar>
+</div> 
+<ng-template #notUser> 
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                Getting Access
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Google has some very important and quite annoying security rules.
+            </p>
+            <p>
+                One of them is that to get access from this app, you MUST have accessed the NAS Shared Folder from the Google Drive app first - so that you get access.
+            </p>
+            <p>
+                You need to follow this link to open the Drive Page. Then <strong>return to this page </strong>and it should work.
+
+                <a href="https://drive.google.com/drive/u/0/folders/1l9GtbHQ_9S3l0xJ2g3T3oNjhdPeKQ0Qv">Access the Google Drive Shared Folder</a>
+            </p>
+        </mat-card-content>
+    </mat-card>
+</ng-template>
+
+<mat-grid-list [cols]="columns"  gutterSize="5px">
+    <mat-grid-tile
+        *ngFor="let file of files; index as i"
+        >
+            <mat-grid-tile-header>
+                <div fxFlex>
+                    <mat-progress-bar *ngIf="file.inProgress" [value]="file.progress" color= "accent" [mode]="file.progressMode"></mat-progress-bar> 
+                </div>
+                <button mat-icon-button color="accent" (click)="imgClick(i)"><mat-icon>close</mat-icon></button>
+            </mat-grid-tile-header>
+                <img class="img-fluid" [src]="file.url">
+            <mat-grid-tile-footer>  
+                <mat-chip-list>
+                    <mat-chip *ngFor="let category of file.categories; index as j" 
+                    color="accent" 
+                    selected="true"
+                    selectable='false'
+                    removable="true"
+                    (removed)="onCategoryRemove(i,j)">
+                    {{category}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                </mat-chip-list>
+                <div fxFlex></div>
+                <button mat-button [matMenuTriggerFor]="menu" [matMenuTriggerData]="{fileIndex: i}">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </mat-grid-tile-footer>
+    </mat-grid-tile>
+</mat-grid-list>
+<mat-menu #menu="matMenu">
+    <ng-template matMenuContent let-fileIndex="fileIndex">
+        <button mat-menu-item *ngFor="let cat of categories.categories" (click)="addCat(fileIndex, cat)">{{cat.name}}</button>
+     </ng-template>
+</mat-menu>
+
+<app-sbp-ol-map class="map-container"
+></app-sbp-ol-map>
+

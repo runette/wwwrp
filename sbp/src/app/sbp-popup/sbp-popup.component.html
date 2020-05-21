@@ -1,0 +1,21 @@
+<div id="popup">
+    <mat-card class="popup">
+        <mat-card-header fxLayout="row">
+                <mat-card-title >
+                    Feature Detail  
+                </mat-card-title>
+                <mat-card-subtitle >
+                    <div [innerHTML]="safeTitle"></div>
+                </mat-card-subtitle>
+                <div fxFlex></div>
+            <button mat-icon-button color="accent" (click)="closePopup()"><i class="material-icons">cancel</i></button>
+        </mat-card-header>
+        <mat-card-content [innerHTML]="safeContent">
+           
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="primary" [disabled]="disabled" (click)="callInventory()">View Inventory</button>
+
+        </mat-card-actions>
+      </mat-card>
+</div>

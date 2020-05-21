@@ -1,0 +1,246 @@
+<div class="container" id="fullscreen-container">
+    <div id="sidebar" class="sidebar collapsed">
+        <!-- Nav tabs -->
+        <div class="sidebar-tabs">
+            <ul role="tablist">
+                <li><a href="#leg" role="tab" ><i class="material-icons sidebar-icons"  title="Map Legend">map</i></a></li>
+                <li><a href="#about" role="tab" ><i class="material-icons sidebar-icons"  title="About Us">description</i></a></li>
+                <li><a href="#inventory" role="tab"  title="Site Inventory"><i class="material-icons sidebar-icons">list_alt</i></a></li>
+                <li><a routerLink="photo" role="tab" title="Upload Photos"><i class="material-icons sidebar-icons">add_a_photo</i></a></li>
+            </ul>
+
+            <ul role="tablist">
+                <li><a href="#settings" role="tab"><i class="material-icons" data-toggle="tooltip" title="Settings">settings_applications</i></a></li>
+            </ul>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="sidebar-content">
+            <div class="sidebar-pane" id="leg">
+                <h1 class="sidebar-header">
+                    <span class="sidebar-close" ><i class="material-icons sidebar-icons" >chevron_right</i></span>
+                    Map Legend
+                </h1>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><ellipse ry="10" rx="10" cy="15" cx="15" stroke-width="2" stroke="#ff0000" fill="#ff9191"/></svg>
+                            </td>
+                            <td>
+                                Wrecks included in the Project Inventory.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><path d="M 5,25 15,5 25,25 Z" stroke-opacity="null" fill='#0099ff' stroke='#0000ff' stroke-width="2"/>
+                                </svg>
+                            </td>
+                            <td>
+                                Wrecks and Obstructions in the UK Hydrographic Office data.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><ellipse ry="10" rx="10" cy="15" cx="15" stroke-width="0" stroke="#ff0000" fill="#fcba03"/></svg>
+                            </td>
+                            <td>
+                                Detailed points showing the location of Wooden Posts or Stakes.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><ellipse ry="10" rx="10" cy="15" cx="15" stroke-width="0" stroke="#ff0000" fill="#949494"/></svg>
+                            </td>
+                            <td>
+                                Detailed points showing the location of the parts of a wreck.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><ellipse ry="10" rx="10" cy="15" cx="15" stroke-width="0" stroke="#ff0000" fill="#019401"/></svg>
+                            </td>
+                            <td>
+                                Detailed points showing the location of other timbers.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><ellipse ry="10" rx="10" cy="15" cx="15" stroke-width="0" stroke="#ff0000" fill="#a8a000"/></svg>
+                            </td>
+                            <td>
+                                Other Points.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="sidebar-pane" id="about">
+                <h1 class="sidebar-header">
+                    <span class="sidebar-close" ><i class="material-icons sidebar-icons" >chevron_right</i></span>
+                    About This App
+                </h1>
+                <div class="card">
+                    <mat-accordion>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Background
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div>
+                                <p>The <a href="https://www.nauticalarchaeologysociety.org/sandwich-flats-foreshore-fieldwork" target="_blank">Sandwich Flats Foreshore Project</a> is an initiative by a group of organisations,
+                                    including the <a href="https://www.nauticalarchaeologysociety.org/" target="_blank">Nautical Archeology Society</a>,
+                                    <a href="https://msdsmarine.com/services/public-engagement/" target="_blank">MSDS Marine</a> and <a href="https://www.citizan.org.uk/about-us/who-we-are/" target="_blank">CITiZAN.</a>
+                                </p>
+                                <p>The intention is to create better understanding about the wrecks on the Sandwich Flats foreshore and
+                                    for local people and members to gain experience of techniques such as
+                                    <li>Walk-over survey</li>
+                                    <li>2D measured tape survey</li>
+                                    <li>Total station survey of wreck sites</li>
+                                    <li>Wreck conservation assessments</li>
+                                    <li>Photogrammetry</li>
+                                    <li>Site Recorder practice</li>
+                                    <li>Use of the CITiZAN app to record coastal features</li>
+                                </p>
+                                <p>
+                                    This app is an independent development based with permission on the outputs from the Project.
+                                </p>
+                            </div>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel expanded="true">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    How to use the App
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Basics
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div>
+                                        <p>
+                                        The app is a map. You can zoom and move the app to where you want OR you can use the <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" style="fill:#000"></path></svg> button
+                                        to sense your device location and move to that location.
+                                        </p>
+                                        <p>
+                                        The map will actually work anywhere in the UK but the site data is only displayed for the Sandwich Flats area.
+                                        </p>
+                                        <p>
+                                        As you zoom into the Sandwich Flats area, more details will be shown down to the level of
+                                        individual finds and timbers where they have been recorded.
+                                        </p>
+                                    </div>
+                                </mat-expansion-panel>
+                                <mat-expansion-panel expanded="true">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Best Practice
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div>
+                                        <p>
+                                        The intended use for the app is for you to turn on automatic location using the <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" style="fill:#000"></path></svg> button and,  as you walk around the site,
+                                        use the map to identify what you can see on the ground.
+                                        </p>
+                                    </div>
+                                </mat-expansion-panel>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Legend and Information
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div>
+                                        <p >The map <strong>legend</strong> can be shown by select the <i class="material-icons" style="font-size: 15px; line-height: 15px;">map</i> menu in the tool bar. </p>
+                                        <p >The map <strong>Site Inventory</strong> can be shown by select the <i class="material-icons" style="font-size: 15px; line-height: 15px;">list_alt</i> menu in the tool bar. </p>
+                                        <p>
+                                            Some markers on the map, specifically wrecks either identified by a red circle 
+                                            <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><ellipse ry="10" rx="10" cy="15" cx="15" stroke-width="2" stroke="#ff0000" fill="#ff9191"/></svg>
+                                            (i.e. sites in the Site Inventory) or a blue triangle
+                                            <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><path d="M 5,25 15,5 25,25 Z" stroke-opacity="null" fill='#0099ff' stroke='#0000ff' stroke-width="2"/>
+                                            </svg>
+                                            (offshore wrecks in the UKHO data)
+                                            have more information. Click or tap  on the marker to see the information pop up.
+                                        </p><p>
+                                            For markers in the Site Inventory, click or tap on the <i class="material-icons" style="line-height:15px !important; font-size:1rem;">launch</i> icon to go directly to the inventory entry.
+                                        </p>
+                                    </div>
+                                    <p>For help, support or suggestions contact : <a href="mailto:info@runette.co.uk?subject=Sandwich Flats Project" target="_blank">info@runette.co.uk</a></p>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Installing the App
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div>
+                                <p>This web app is a special type of application (known as a Progressive Web Application) that works as either a website or an App on your phone.</p>
+                                <p>If you using a modern browser (i.e. latest versions of Chrome, Edge, Firefox or Safari), you can add the app to your homescreen. This puts an icon for the App on your device that works a lot like a normal app without taking very much memory or other resources.This will make the app faster and work better with no connection</p>
+                                <p>NOTE that this is a map based app and like other such apps including Google Maps, the map is not really available when there is no connection and so may not display correctly, or at all, without a connection.</p>
+                                <p>How you do this does depend a lot on the browser and device. Using Chrome or Edge on Android or desktop, you may see a banner asking you to install the app or you can go to the menu where you will see an item that says "Install Sandwidh Bay Flats Project" or "Add to Home Screen". There is also a small plus sign next to the facvourite button that you can press.</p>
+                                <p>On the iPhone, select 'Share" and look for "add to Home Screen"</p>
+                            </div>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Advanced Features
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div>
+                                <p>The app is currently testing one advanced, experimental feature that will work <strong>only</strong> with the <strong>latest</strong> versions of Chrome and Edge.</p>
+                                <p>This feature will over ride the screen saver function of the phone if, and only if, you flip the "Wake Lock" switch on the settings tab.</p>
+                                <p>This means that the app will stay active and visible for as long as you want. This also means that the phone will use much more power and run out much more quickly.</p>
+                                <p>Note that this over ride only lasts as long as the App is on the screen. If you switch away from the app or minimize the app, the normal screen saver functions return.</p> 
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                    <div class="card-body">
+                        <p class="small text-center"><a href="privacy.html" target="_blank">Terms of Service and Privacy Policy</a></p>
+                        <p class="small text-center">Website &copy; <a href="https://www.runette.co.uk" target="_blank">Runette Software Ltd</a>, 2020</p>
+                        <a href="https://www.runette.co.uk" target="_blank">
+                        <img class="img-fluid mx-auto d-block" src="runette_long.png" style="width: 100px">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-pane frame" id="inventory">
+                <h1 class="sidebar-header">
+                    <span class="sidebar-close" ><i class="material-icons sidebar-icons" >chevron_right</i></span>
+                    Site Inventory
+                    <span class='tools'>
+                        <i class="material-icons md-light sidebar-icons"  title='Home'   style='cursor:pointer;  '>home</i>
+                        <a data-toggle="tooltip" title="Open Doc" routerLink="inventory"> <i class="material-icons md-light sidebar-icons">launch</i></a>
+                    </span>
+                </h1>
+                <app-sbp-inventory
+                    [Url]="inventoryUrl"
+                ></app-sbp-inventory>
+            </div>
+            <div class="sidebar-pane" id="settings">
+                <h1 class="sidebar-header">
+                    <span class="sidebar-close" ><i class="material-icons sidebar-icons" >chevron_right</i></span>
+                    Settings 
+                </h1>
+                <app-sbp-settings></app-sbp-settings>
+            </div>
+        </div>
+    </div>
+    <app-sbp-ol-map class="map-container" 
+        (mapReady)="onMapReady($event)"
+    ></app-sbp-ol-map>
+    <app-sbp-locate
+        [Map]="Map"
+    ></app-sbp-locate>
+    <app-sbp-popup
+        [Map]="Map"
+        (Url)="onUrl($event)"
+    ></app-sbp-popup>
+</div>
+
