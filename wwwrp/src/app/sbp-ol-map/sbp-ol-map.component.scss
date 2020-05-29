@@ -1,48 +1,53 @@
 .map-container {
-    width:inherit;
-    height:inherit;
-    z-index: 1;
+  width: inherit;
+  height: inherit;
+  z-index: 1;
 }
 
 .map-heading {
   position: absolute;
   top: 0%;
   left: 25%;
-  background-color: rgba(0,60,136,.7);
+  background-color: rgba(0, 60, 136, 0.7);
   color: #fff;
 }
-
-
 
 /* geo north image is 301x301, mag north image is 200x200 */
 #compassRose {
   position: absolute;
   bottom: 2.5em;
-  right:  18px;
-  width: 261px; height: 261px;
+  left: 18px;
+  width: 261px;
+  height: 261px;
   z-index: 1000;
 }
 
 #geoCompassRose {
-  position:absolute; right:50%; bottom:50%;
-  width: 261px; height: 261px;
+  position: absolute;
+  width: 261px;
+  height: 261px;
 }
 
 #magCompassRose {
-  position:absolute; right:50%; bottom:50%;
-  width: 261px; height: 261px;
+  position: absolute;
+  width: 261px;
+  height: 261px;
   transform: rotate(0deg);
 }
 
 #magCompassText {
-  position: absolute; left:132px; bottom: 118px;
+  position: absolute;
+  top: 50%;
+  right: 50%;
   color: #e50083;
   font-size: 9px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   width: 100px;
   text-align: center;
+  transform: translate(50%, -30%);
 }
 
 #magCompassTextTop {
-  position: relative; left:-50%; bottom: 20px;
+  position: relative;
+  bottom: 20px;
 }

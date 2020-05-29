@@ -4,8 +4,7 @@ import { MultiPoint} from 'ol/geom';
 import {Style, Circle, Fill, Stroke, RegularShape, Text} from 'ol/style';
 import {Vector, Cluster} from 'ol/source';
 import {WFS} from 'ol/format';
-import { ScaleLine, defaults as DefaultControls} from 'ol/control';
-import {OpenSpaceOL6, DEFAULT_LAYERS, OpenSpaceLogoControl} from './openspace-ol6';
+import { Control,ScaleLine, defaults as DefaultControls} from 'ol/control';
 import {ColorLike} from 'ol/colorlike';
 import {Coordinate} from 'ol/coordinate';
 import proj4 from 'proj4';
@@ -15,11 +14,14 @@ import XYZ from 'ol/source/XYZ';
 import Projection from 'ol/proj/Projection';
 import TileLayer from 'ol/layer/Tile';
 import TileWMS from 'ol/source/TileWMS';
+import {toSize} from 'ol/size';
 
 import {register}  from 'ol/proj/proj4';
 import {get as GetProjection} from 'ol/proj'
 import {Extent} from 'ol/extent';
 import {SbpCategoriesService} from '../sbp-categories.service'
+import {MagDev} from './mag-dev';
+import { format } from 'path';
 
 @Component({
   selector: 'app-sbp-ol-map',
@@ -33,7 +35,7 @@ export class SbpOlMapComponent implements OnInit, AfterViewInit {
   Map: Map;
   @Output() mapReady = new EventEmitter;
 
-  constructor(private zone: NgZone, public categories: SbpCategoriesService) { }
+  constructor(private zone: NgZone, public categories: SbpCategoriesService, private compass: MagDev) { }
 
   ngOnInit(): void {
 
@@ -54,14 +56,14 @@ export class SbpOlMapComponent implements OnInit, AfterViewInit {
     if (size <= 768) {
       pixelRatio = 1
     }
-
-    let projection = new Projection({
-      code: "EPSG:900913"
-    })
+    proj4.defs("EPSG:900913","+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs");
+    proj4.defs("EPSG:3857","+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs");
+    register(proj4)
+    let projection = GetProjection('EPSG:3857');
 
     this.view = new View({
       center: this.center,
-      zoom: 8.5,
+      zoom: 9.5,
       projection: projection
     });
 
@@ -76,23 +78,37 @@ export class SbpOlMapComponent implements OnInit, AfterViewInit {
     });
     const marineTraffic = new TileLayer({
       source: new XYZ({
-        url: "https://tiles.marinetraffic.com/ais_helpers/shiptilesingle.aspx?output=png&sat=1&grouping=shiptype&tile_size=512&legends=1&zoom={z}&X={x}&Y={y}"
+        url: "https://tiles.marinetraffic.com/ais_helpers/shiptilesingle.aspx?output=png&sat=1&grouping=shiptype&tile_size=256&legends=1&zoom={z}&X={x}&Y={y}",
+        tileSize: toSize(256), 
       })
     });
     const contours = new TileLayer({
       source: new TileWMS({
-        url: "  ",
+        url: "http://osm.franken.de:8080/geoserver/gwc/service/wms",
         params:{
           layers: ["gebco_2014"],
           'VERSION': '1.1.0',
         },
-      })
-    })
+      }),
+      opacity: 0.8,
+    });
+    const gebco = new TileLayer({
+      source: new TileWMS({
+        url: "http://wwwrp.swbayproject.com/qgisserver?MAP=/var/qgis/wwrp.qgs",
+        params:{
+          layers: ["gebco"],
+          'VERSION': "1.3.0",
+          format: "image/png",
+        }
+      }),
+      opacity: 0.8
+    });
     const layers=[
-      osm, 
+      osm,
+      contours,   
+      gebco,
       seamarks,
       marineTraffic,
-      contours
     ];
     this.Map = new Map({
       layers: layers,
@@ -102,8 +118,13 @@ export class SbpOlMapComponent implements OnInit, AfterViewInit {
       controls: DefaultControls().extend([
         new ScaleLine({}),
         new OpenSpaceLogoControl({ className: 'openspaceol6-openspace-logo' })
-      ])
+      ]),
     });
+    this.compass.map = this.Map;
+    this.compass.refreshMagdev();
+    this.Map.on('moveend', e =>{
+      this.compass.refreshMagdev();
+    })
   };
 
   private circleStyle(feature, resolution) {
@@ -193,5 +214,24 @@ export class SbpOlMapComponent implements OnInit, AfterViewInit {
         }),
       })
     })
+  }
+}
+
+class OpenSpaceLogoControl extends Control{
+  constructor(opt_options) {
+      let options = opt_options || {};
+      super(options);
+      let image = document.createElement('img');
+      image.src = 'https://openspace.ordnancesurvey.co.uk/osmapapi/img_versions/img_4.0.0/OS/poweredby_free.png';
+      var element = document.createElement('div');
+      // by default, the logo's position on the map is set by the OpenSpaceOL6-openspace-logo css in your .html/.css file
+      element.className = options.className || 'OpenSpaceOL6-openspace-logo';
+      element.className += ' ol-unselectable ol-control';
+      element.appendChild(image);
+
+      Control.call(this, {
+      element: element,
+      target: options.target
+      });
   }
 }
